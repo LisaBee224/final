@@ -1,0 +1,53 @@
+s<div class="alert alert-danger" ng-show="error">
+  {{ error }}
+</div>
+
+<div class="alert alert-success" ng-show="success">
+  {{ success }}
+</div>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3 well">
+    <form style="margin: 10px 0" ng-show="user.authenticated()">
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" class="form-control" ng-model="inserting.name">
+      </div>
+        <div class="color">
+        <label>Choose a color</label>
+        <select ng-model="inserting.color">
+          <option value ="blue">blue</option>
+          <option value="yellow">yellow</option>
+          <option value="green">green</option>
+          <select>
+      </div>
+      <div class="description">
+        <label>Description</label>
+        <input type="text" ng-model="inserting.description">
+      </div>
+      <button class="btn btn-success" ng-click="insert()">Save</button>
+    </form>
+  </div>
+</div>
+<ul class="list-group">
+  <li class="list-group-item" ng-repeat="thing in things">
+    <div class="row">
+      <div class="col-md-9">
+        {{ thing.name }}
+        <br />
+    
+        <div class="label" style="background-color: {{ thing.color }}">
+          {{ thing.color }}
+        </div>
+          <div class="label" style="background-color: {{ thing.description }}">
+          {{ thing.description}}
+        </div>
+      </div>
+      <div class="col-md-3 text-right" ng-if="loggedin">
+        <button ng-click="edit(thing)" class="btn btn-primary">Edit</button>
+        <button ng-click="delete(thing)" class="btn btn-danger">Delete</button>
+      </div>
+    </div>
+  </li>
+</ul>
+<h6>{{ user }}</h6>
